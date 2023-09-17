@@ -1,21 +1,19 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import Home from './pages/Home';
 import { useAuth } from './hooks/useAuth';
-import Diagram from './components/Diagram';
+
+import Diogram from './components/Diogram';
+import { data } from './mock/diogramData';
 
 const App = () => {
   const { isAuth } = useAuth();
 
-  const data = [25, 25, 25, 25];
-  const width = 200;
-  const height = 200;
-
   return (
     <>
-      {/* {isAuth ? (
+      {isAuth ? (
         <Routes>
           <Route path="/" element={<Home />} />
         </Routes>
@@ -23,10 +21,13 @@ const App = () => {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route
+            path="/"
+            element={<Diogram data={data} showLegend={false} />}
+          />
           <Route path="/*" element={<Register />} />
         </Routes>
-      )} */}
-      <Diagram data={data} width={width} height={height} />
+      )}
     </>
   );
 };
