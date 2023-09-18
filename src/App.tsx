@@ -7,6 +7,7 @@ import { useAuth } from './hooks/useAuth';
 
 import Diogram from './components/Diogram';
 import { data } from './mock/diogramData';
+import BarChart from './components/BarChart';
 
 const App = () => {
   const { isAuth } = useAuth();
@@ -22,9 +23,10 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route
-            path="/"
+            path="/diogram"
             element={<Diogram data={data} showLegend={false} />}
           />
+          <Route path="/barchart" element={<BarChart />} />
           <Route path="/*" element={<Register />} />
         </Routes>
       )}
